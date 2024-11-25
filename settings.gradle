@@ -1,0 +1,32 @@
+// 设置项目名称
+rootProject.name = "EarthquakeProject"
+
+// 包含的模块 (单模块项目可以省略)
+include(":app")
+
+// 依赖解析管理部分
+dependencyResolutionManagement {
+    // 强制项目依赖使用 settings.gradle 中定义的仓库
+//    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+
+    repositories {
+        google() // Google 仓库，适用于 Android 工具和支持库
+        mavenCentral() // Maven Central，适用于大多数 Java/Kotlin 库
+
+        // 可选：添加其他自定义仓库
+        // maven { url 'https://jitpack.io' }
+    }
+}
+
+// 可选：启用构建缓存以提高构建性能
+buildCache {
+    local {
+        enabled = true
+        directory = "${rootDir}/.gradle/build-cache"
+        removeUnusedEntriesAfterDays = 30
+    }
+}
+
+// Gradle 的特定版本兼容设置
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+enableFeaturePreview("VERSION_CATALOGS")
